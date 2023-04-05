@@ -1,0 +1,22 @@
+.todo-list {
+  margin-top: 20px;
+  // .todo-list__tools
+
+  &__tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // .todo-list__wrapper
+
+  &__wrapper {
+    margin-top: 10px;
+  }
+  &__filter {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 15px;
+  }
+}
