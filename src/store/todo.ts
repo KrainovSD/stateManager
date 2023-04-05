@@ -28,7 +28,7 @@ export interface IReducersList {
   clearFinished: TReducerWithOutPayload;
 }
 type TReducerWithOutPayload = () => void;
-type TReducerWithPayload<T> = (payload: T) => IInitialTodo;
+type TReducerWithPayload<T> = (payload: T) => void;
 
 const initialState: IInitialTodo = {
   todo: [],
