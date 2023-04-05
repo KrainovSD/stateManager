@@ -1,13 +1,16 @@
 import { CustomInput } from "../../../../components/UI/Input/CustomInput";
 import "./TodoAdd.scss";
 import { CustomButton } from "../../../../components/UI/Button/CustomButton";
-import todoStore, { ITodo } from "../../../../store/todo";
+import todoStore, { IReducersList, ITodo } from "../../../../store/todo";
 import { useSelector } from "../../../../../KRStore";
 import { useState } from "react";
 
 export const TodoAdd: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
-  const [todos, dispatch] = useSelector<ITodo[]>(todoStore, "todo");
+  const [todos, dispatch] = useSelector<ITodo[], IReducersList>(
+    todoStore,
+    "todo"
+  );
   const createTodo = () => {
     if (todo.trim().length === 0) return;
     dispatch.addTodo(todo);

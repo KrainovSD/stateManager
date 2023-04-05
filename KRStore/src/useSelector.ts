@@ -5,10 +5,10 @@ import {
   TPublicReducerList,
 } from "./types.t";
 
-export const useSelector = <T>(
+export const useSelector = <T = IInitialState, R = TPublicReducerList>(
   store: TCreateStoreResult,
   field?: string | number
-): [T, TPublicReducerList] => {
+): [T, R] => {
   const hasObservedProperty = field && field in store.state.current;
   const [state, setState] = useState<T>(
     hasObservedProperty ? store.state.current[field] : store.state.current
@@ -29,5 +29,5 @@ export const useSelector = <T>(
       store.unSub(subID);
     };
   }, []);
-  return [state as T, store.reducers];
+  return [state as T, store.reducers as R];
 };

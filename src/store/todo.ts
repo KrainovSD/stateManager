@@ -19,6 +19,17 @@ export interface ITodo {
   id: string;
 }
 
+export interface IReducersList {
+  addTodo: TReducerWithPayload<string>;
+  updateTodoFinish: TReducerWithPayload<string>;
+  updateTodoFinishAll: TReducerWithOutPayload;
+  updateTodoTitle: TReducerWithPayload<{ id: string; title: string }>;
+  deleteTodo: TReducerWithPayload<string>;
+  clearFinished: TReducerWithOutPayload;
+}
+type TReducerWithOutPayload = () => void;
+type TReducerWithPayload<T> = (payload: T) => IInitialTodo;
+
 const initialState: IInitialTodo = {
   todo: [],
 };

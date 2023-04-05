@@ -1,6 +1,6 @@
 import "./TodoItem.scss";
 import { CustomCheckBox } from "../../../../components/UI/CheckBox/CustomCheckBox";
-import todoStore, { ITodo } from "../../../../store/todo";
+import todoStore, { IReducersList, ITodo } from "../../../../store/todo";
 import { useSelector } from "../../../../../KRStore";
 import { useState } from "react";
 import pencil from "../../../../assets/media/pencil.png";
@@ -12,7 +12,10 @@ interface TodoItemProps {
 }
 
 export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
-  const [todos, dispatch] = useSelector<ITodo[]>(todoStore, "todo");
+  const [todos, dispatch] = useSelector<ITodo[], IReducersList>(
+    todoStore,
+    "todo"
+  );
   const toggleTodo = (id: string) => {
     dispatch.updateTodoFinish(id);
   };

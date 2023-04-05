@@ -1,13 +1,16 @@
 import "./TodoList.scss";
 import { Fragment, useState } from "react";
-import todoStore, { ITodo } from "../../../../store/todo";
+import todoStore, { IReducersList, ITodo } from "../../../../store/todo";
 import { useSelector } from "../../../../../KRStore";
 import { TodoItem } from "../TodoItem/TodoItem";
 import { TodoListTools } from "../TodoListTools/TodoListTools";
 import { TodoListFilter } from "../TodoListFilter/TodoListFilter";
 
 export const TodoList: React.FC = () => {
-  const [todos, dispatch] = useSelector<ITodo[]>(todoStore, "todo");
+  const [todos, dispatch] = useSelector<ITodo[], IReducersList>(
+    todoStore,
+    "todo"
+  );
   const selectAllTodo = () => {
     dispatch.updateTodoFinishAll();
   };
